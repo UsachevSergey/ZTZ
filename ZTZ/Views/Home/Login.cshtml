@@ -1,0 +1,27 @@
+﻿@model ZTZ.Models.Accounts
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    
+                @Html.EditorFor(model => model.Name) 
+           
+                @Html.EditorFor(model => model.Password)         
+          
+                <input type="submit" value="Авторизация" class="btn btn-default" />
+               
+}
+
+<div>
+    @Html.ActionLink("на главную", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

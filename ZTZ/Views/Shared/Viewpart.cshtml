@@ -1,0 +1,26 @@
+﻿<div class="navbar-right">
+ 
+     @if (Session["Id_user"] !=null)
+     {
+             <ul class="nav navbar-nav navbar-right">
+                 <li>
+                     <a> Здравствуйте,  @Session["Name"]  </a> 
+                 </li>
+                 <li>@Html.ActionLink("Выйти", "Exit", "Home")</li>
+
+             </ul>
+         }
+     
+     else
+     {
+         <ul class="nav navbar-nav navbar-right">
+             <li>@Html.ActionLink("Регистрация", "Register", "Home")</li>
+             <li>@Html.ActionLink("Выполнить вход", "Login","Home")</li>
+         </ul>
+     }
+
+    
+    
+    </div>
+
+

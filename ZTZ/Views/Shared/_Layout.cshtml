@@ -24,10 +24,12 @@
                     <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
                     
                 </ul>
+                @Html.Partial("Viewpart")
             </div>
         </div>
     </div>
     <div class="container body-content">
+
         @RenderBody()
         <hr />
         <footer>

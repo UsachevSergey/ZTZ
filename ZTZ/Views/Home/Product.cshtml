@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ZTZ.Models.Products>
+
+@{
+    ViewBag.Title = "Product";
+}
+
+<h2>Product</h2>
+
+<p>
+    @Html.ActionLink("Создать товар", "CreateItem")
+</p>
+<table class="table">
+    <tr>   
+        <th>
+         Наименование
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr> 
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>     
+    </tr>
+}
+
+</table>

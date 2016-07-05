@@ -23,12 +23,20 @@ namespace ZTZ.Controllers
         [HttpPost]
         public ActionResult Register(Accounts acc)
         {
+            if (CDB.Accounts.Any(s => s.Name == acc.Name))
+            {
+                ViewBag.os = "Логин занят";
+                return View();
+            }
             acc.Id = Guid.NewGuid();
             CDB.Accounts.Add(acc);
             CDB.SaveChanges();
             return RedirectToAction("Index", "Home");
         }
-
+        public ActionResult info()
+        {
+            return View();
+        }
 
         [HttpGet]
         public ActionResult Login()
@@ -59,6 +67,40 @@ namespace ZTZ.Controllers
             Session["Id_user"] = null;
             Session["Name"] = null;
            return  RedirectToAction("Index");
+        }
+
+        public ActionResult MyOrd() {
+
+            ViewData["items"] = new[]
+           {
+                new SelectListItem{ Text = "Сформирован", Value = "Сформирован" },
+                new SelectListItem { Text = "В обработке",Value = "В обработке"},
+                new SelectListItem {Text = "Выполнен", Value = "Выполнен" },
+               
+            };
+            Guid g = (Guid)Session["Id_user"];
+            return View(CDB.Orders.Where(w=>w.Account_Id== g ).ToList());
+        }
+
+        public ActionResult Product()
+        {
+          return  View(CDB.Products.ToList());
+        }
+        public ActionResult CreateOrder()
+        {
+            
+
+
+            Orders o = new Orders();
+            Guid g = (Guid)Session["Id_user"];
+            o.Account_Id = g;
+            o.Status = "Сформирован";
+            o.Date = DateTime.Now;
+            if (CDB.Orders.Count(s => s.Account_Id ==g) > 0) {
+                o.Number = CDB.Orders.Where(s => s.Account_Id ==g).Max(d => d.Number) + 1;
+            }
+            else { o.Number = 1; }
+            return View(o);
         }
 
 

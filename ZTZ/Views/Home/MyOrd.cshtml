@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ZTZ.Models.Orders>
+
+@{
+    ViewBag.Title = "Мои заказы";
+}
+
+<h2>Мои заказы</h2>
+
+<br />
+    <div class="col-md-10">
+        @Html.DropDownList("Список", (IEnumerable<SelectListItem>)ViewData["items"])
+    </div>
+<br /><br /><br />
+    <p>
+        @Html.ActionLink("Создать заказ", "CreateOrder")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Дата заказа
+            </th>
+            <th>
+                Номер заказа
+            </th>
+            <th>
+                Статус заказа
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            </tr>
+        }
+
+    </table>

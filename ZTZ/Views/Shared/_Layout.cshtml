@@ -22,18 +22,23 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    
+                    @if (Session["Id_user"] != null)
+                    {
+                      <li>  @Html.ActionLink("Мои заказы", "MyOrd", "Home")</li>
+                      <li> @Html.ActionLink("Товары", "Product", "Home")</li>
+                    }
+                    <li>@Html.ActionLink("INFO","info","home")</li>
                 </ul>
                 @Html.Partial("Viewpart")
             </div>
         </div>
     </div>
     <div class="container body-content">
-
+         
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+            @*<p>&copy; @DateTime.Now.Year</p>*@
         </footer>
     </div>
 

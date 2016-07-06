@@ -135,6 +135,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Accounts.cs" />
+    <Compile Include="Models\AddItemModel.cs" />
     <Compile Include="Models\ContextDB.cs" />
     <Compile Include="Models\LinesOrder.cs" />
     <Compile Include="Models\Orders.cs" />
@@ -154,6 +155,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -183,6 +186,7 @@
     <Content Include="Views\Home\Product.cshtml" />
     <Content Include="Views\Home\CreateOrder.cshtml" />
     <Content Include="Views\Home\info.cshtml" />
+    <Content Include="Views\Home\Additemalax.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

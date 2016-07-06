@@ -86,11 +86,9 @@ namespace ZTZ.Controllers
         {
           return  View(CDB.Products.ToList());
         }
+        [HttpGet]
         public ActionResult CreateOrder()
-        {
-            
-
-
+        { 
             Orders o = new Orders();
             Guid g = (Guid)Session["Id_user"];
             o.Account_Id = g;
@@ -102,7 +100,21 @@ namespace ZTZ.Controllers
             else { o.Number = 1; }
             return View(o);
         }
+        [HttpPost]
+        public ActionResult CreateOrder(Orders ord, int Id_prod ,Guid Numb,int Count_item)
+        {
+            return View();
+        }
 
+
+
+
+
+        //Частички
+        public ActionResult Additemalax()
+        {
+            return PartialView();
+        }
 
     }
 }
